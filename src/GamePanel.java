@@ -94,31 +94,32 @@ public class GamePanel extends JPanel implements ActionListener {
     public void checkApple() {
 
     }
+
     public void checkCollisions() {
         //checks if head collides with body
-        for(int i = bodyParts;i>0;i--) {
-            if((x[0] == x[i])&& (y[0] == y[i])) {
+        for (int i = bodyParts; i > 0; i--) {
+            if ((x[0] == x[i]) && (y[0] == y[i])) {
                 running = false;
             }
         }
         //check if head touches left border
-        if(x[0] < 0) {
+        if (x[0] < 0) {
             running = false;
         }
         //check if head touches right border
-        if(x[0] > SCREEN_WIDTH) {
+        if (x[0] > SCREEN_WIDTH) {
             running = false;
         }
         //check if head touches top border
-        if(y[0] < 0) {
+        if (y[0] < 0) {
             running = false;
         }
         //check if head touches bottom border
-        if(y[0] > SCREEN_HEIGHT) {
+        if (y[0] > SCREEN_HEIGHT) {
             running = false;
         }
 
-        if(!running) {
+        if (!running) {
             timer.stop();
         }
     }
@@ -141,7 +142,28 @@ public class GamePanel extends JPanel implements ActionListener {
     public class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_LEFT:
+                    if (directions != 'R') {
+                        directions = 'L';
+                    }
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    if (directions != 'L') {
+                        directions = 'R';
+                    }
+                    break;
+                case KeyEvent.VK_UP:
+                    if (directions != 'D') {
+                        directions = 'U';
+                    }
+                    break;
+                case KeyEvent.VK_DOWN:
+                    if (directions != 'U') {
+                        directions = 'D';
+                    }
+                    break;
+            }
         }
     }
 }
