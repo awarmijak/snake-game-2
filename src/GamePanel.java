@@ -58,13 +58,12 @@ public class GamePanel extends JPanel implements ActionListener {
             for(int i = 0; i< bodyParts;i++) {
                 if(i == 0) {
                     g.setColor(Color.green);
-                    g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
                 else {
                     g.setColor(new Color(45,180,0));
                     //g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255)));
-                    g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
+                g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
             }
             g.setColor(Color.red);
             g.setFont( new Font("Ink Free",Font.BOLD, 40));
@@ -119,6 +118,7 @@ public class GamePanel extends JPanel implements ActionListener {
         for (int i = bodyParts; i > 0; i--) {
             if ((x[0] == x[i]) && (y[0] == y[i])) {
                 running = false;
+                break;
             }
         }
         //check if head touches left border
